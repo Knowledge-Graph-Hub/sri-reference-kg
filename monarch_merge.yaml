@@ -80,7 +80,7 @@ merged_graph:
       type: nt
       compression: gz
       filename:
-        - /Users/deepak.unni3/GIT/kgx-deepakunni3/monarch-data/ctd.nt.gz
+        - monarch-data/ctd.nt.gz
     ensembl:
       name: "ENSEMBL (Monarch version 202007)"
       type: nt
@@ -92,7 +92,7 @@ merged_graph:
       type: nt
       compression: gz
       filename:
-        - /Users/deepak.unni3/GIT/kgx-deepakunni3/monarch-data/eom.nt.gz
+        - monarch-data/eom.nt.gz
     flybase:
       name: "FlyBase (Monarch version 202007)"
       type: nt
@@ -104,7 +104,7 @@ merged_graph:
       type: nt
       compression: gz
       filename:
-        - /Users/deepak.unni3/GIT/kgx-deepakunni3/monarch-data/genereviews.nt.gz
+        - monarch-data/genereviews.nt.gz
     go:
       name: "Gene Ontology (Monarch version 202007)"
       type: nt
@@ -122,7 +122,7 @@ merged_graph:
       type: nt
       compression: gz
       filename:
-        - /Users/deepak.unni3/GIT/kgx-deepakunni3/monarch-data/hgnc.nt.gz
+        - monarch-data/hgnc.nt.gz
     hpoa:
       name: "Human Phenotype Ontology (Monarch version 202007)"
       type: nt
