@@ -1,0 +1,283 @@
+configuration:
+  output_directory: monarch-data-parsed
+  curie_map:
+    # define non-canonical CURIE to IRI mappings
+    MONARCH_BNODE: 'https://monarchinitiative.org/.well-known/genid/'
+    MonarchArchive: 'https://archive.monarchinitiative.org/#'
+    HGNC: 'https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:'
+    NCBIGene: 'https://www.ncbi.nlm.nih.gov/gene/'
+    OMIM: 'http://omim.org/entry/'
+    OMIMPS: 'http://www.omim.org/phenotypicSeries/'
+    EC: 'https://www.enzyme-database.org/query.php?ec='
+    MESH: 'http://id.nlm.nih.gov/mesh/'
+    EFO: 'http://www.ebi.ac.uk/efo/EFO_'
+    OMIA: 'https://omia.org/OMIA'
+    VGNC: 'https://vertebrate.genenames.org/data/gene-symbol-report/#!/vgnc_id/'
+    AspGD_REF: 'http://www.aspergillusgenome.org/cgi-bin/reference/reference.pl?dbid='
+    AspGD: 'http://www.aspergillusgenome.org/cgi-bin/locus.pl?dbid='
+  node_properties:
+    # define predicates that are to be treated as direct node/edge properties
+    - 'http://www.geneontology.org/formats/oboInOwl#hasDbXref'
+    - 'http://purl.obolibrary.org/obo/IAO_0000142'
+    - 'http://purl.obolibrary.org/obo/RO_0002162'
+    - 'http://purl.obolibrary.org/obo/ERO_0000480'
+  predicate_mappings:
+    # map predicates non-canonical predicates to node/edge properties
+    'http://www.geneontology.org/formats/oboInOwl#hasDbXref': xref
+    'http://purl.obolibrary.org/obo/IAO_0000142': mentions
+    'http://purl.obolibrary.org/obo/IAO_0000004': has_measurement_value
+    'http://purl.obolibrary.org/obo/SEPIO_0000111': is_assertion_supported_by
+    'http://purl.obolibrary.org/obo/STATO_0000129': has_value
+    'http://purl.obolibrary.org/obo/GENO_0000418': has_affected_feature
+    'http://purl.obolibrary.org/obo/GENO_0000382': has_variant_part
+    'http://purl.obolibrary.org/obo/GENO_0000580': has_qualifier
+    'http://purl.obolibrary.org/obo/GENO_0000866': has_quantifier
+    'https://monarchinitiative.org/frequencyOfPhenotype': frequency_of_phenotype
+    'http://purl.obolibrary.org/obo/ERO_0000480': has_url
+    'http://purl.org/pav/createdOn': created_on
+    'https://monarchinitiative.org/onset': onset
+  property_types:
+    # define the type for non-canonical node/edge properties
+    assertion_confidence_score: xsd:integer
+    has_value: xsd:float
+    has_quantifier: xsd:float
+
+merged_graph:
+  name: Monarch Graph
+  targets:
+    animalqtldb:
+      name: "Animal QTL db (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/animalqtldb.nt.gz
+    bgee:
+      name: "Bgee Gene expression data in animals (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/bgee.nt.gz
+    biogrid:
+      name: "Biological General Repository for Interaction Datasets (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/biogrid.nt.gz
+    clinvar:
+      name: "ClinVar (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/clinvar.nt.gz
+    coriell:
+      name: "Coriell Institute for Medical Research (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/coriell.nt.gz
+    ctd:
+      name: "Comparative Toxicogenomics Database (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - /Users/deepak.unni3/GIT/kgx-deepakunni3/monarch-data/ctd.nt.gz
+    ensembl:
+      name: "ENSEMBL (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/ensembl.nt.gz
+    eom:
+      name: "Elements of Morphology (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - /Users/deepak.unni3/GIT/kgx-deepakunni3/monarch-data/eom.nt.gz
+    flybase:
+      name: "FlyBase (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/flybase.nt.gz
+    genereviews:
+      name: "Gene Reviews (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - /Users/deepak.unni3/GIT/kgx-deepakunni3/monarch-data/genereviews.nt.gz
+    go:
+      name: "Gene Ontology (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/go.nt.gz
+    gwascatalog:
+      name: "NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/gwascatalog.nt.gz
+    hgnc:
+      name: "HGNC (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - /Users/deepak.unni3/GIT/kgx-deepakunni3/monarch-data/hgnc.nt.gz
+    hpoa:
+      name: "Human Phenotype Ontology (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/hpoa.nt.gz
+    impc:
+      name: "International Mouse Phenotyping Consortium (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/impc.nt.gz
+    kegg:
+      name: "Kyoto Encyclopedia of Genes and Genomes (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/kegg.nt.gz
+    mgi:
+      name: "Mouse Genome Informatics (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/mgi.nt.gz
+  #  mgislim:
+  #    name: "MonarchArchive:mgislim (Monarch version 202007)"
+  #    type: nt
+  #    compression: gz
+  #    filename:
+  #      - monarch-data/mgislim.nt.gz
+    mmrrc:
+      name: "Mutant Mouse Regional Resource Centers (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/mmrrc.nt.gz
+    monarch:
+      name: "The Monarch Initiative (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/monarch.nt.gz
+    monochrom:
+      name: "Monarch Chromosome Ontology (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/monochrom.nt.gz
+    mpd:
+      name: "Mouse Phenome Database (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/mpd.nt.gz
+  #  mychem:
+  #    name: "BioThings chemical and drug annotation data (Monarch version 202007)"
+  #    type: nt
+  #    compression: gz
+  #    filename:
+  #      - monarch-data/mychem.nt.gz
+    ncbigene:
+      name: "National Center for Biotechnology Information (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/ncbigene.nt.gz
+    omia:
+      name: "Online Mendelian Inheritance in Animals (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/omia.nt.gz
+    omim:
+      name: "Online Mendelian Inheritance in Man (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/omim.nt.gz
+    orphanet:
+      name: "Orphanet (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/orphanet.nt.gz
+    panther:
+      name: "Protein ANalysis THrough Evolutionary Relationships (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/panther.nt.gz
+    reactome:
+      name: "Reactome (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/reactome.nt.gz
+    rgd:
+      name: "Rat Genome Database (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/rgd.nt.gz
+    sgd:
+      name: "Saccharomyces Genome Database (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/sgd.nt.gz
+    string:
+      name: "Known and predicted protein-protein interactions (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/string.nt.gz
+    ucscbands:
+      name: "UCSC Cytogenic Bands (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/ucscbands.nt.gz
+    udp:
+      name: "Undiagnosed Disease Program (Monarch version 201803)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/udp.nt.gz
+    wormbase:
+      name: "WormBase (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/wormbase.nt.gz
+    zfin:
+      name: "Zebra Fish Information Network (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/zfin.nt.gz
+#    zfinslim:
+#      name: "Simplified ZFIN (Monarch version 202007)"
+#      type: nt
+#      compression: gz
+#      filename:
+#        - monarch-data/zfinslim.nt.gz
+  operations:
+    - name: kgx.operations.clique_merge.clique_merge
+      args:
+        leader_annotation: cliqueLeader
+        prefix_prioritization_map:
+          'biolink:NamedThing':
+            - HGNC
+            - NCBIGene
+            - ENSEMBL
+  destination:
+    monarch-kg-tsv:
+      type: tsv
+      compression: tar.gz
+      filename: monarch-kg
