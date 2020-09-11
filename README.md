@@ -20,3 +20,8 @@ There are several ways of building a Biolink Model complaint Monarch KG.
 This can be achieved by parsing the N-Triples through [KGX](https://github.com/NCATS-Tangerine/KGX.git).
 
 The [monarch-transform.yaml](monarch-transform.yaml) lists all the sources that are transformed as part of this workflow. Each source has its own specific properties to facilitate the parsing of the N-Triples by KGX. The final end product of this workflow is a TSV in the [KGX interchange format](https://github.com/NCATS-Tangerine/kgx/blob/master/data-preparation.md)
+
+
+## Running the merge
+
+kgx merge --processes 4 monarch_merge.yaml
