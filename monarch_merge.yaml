@@ -45,6 +45,23 @@ configuration:
 merged_graph:
   name: Monarch Graph
   targets:
+    monarch-ontologies:
+      name: "Monarch Ontologies"
+      type: json
+      filename:
+        - monarch-data/monarch-ontology-sri-translator.json
+    panther:
+      name: "Protein ANalysis THrough Evolutionary Relationships (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/panther.nt.gz
+    clinvar:
+      name: "ClinVar (Monarch version 202007)"
+      type: nt
+      compression: gz
+      filename:
+        - monarch-data/clinvar.nt.gz
     animalqtldb:
       name: "Animal QTL db (Monarch version 202007)"
       type: nt
@@ -63,12 +80,6 @@ merged_graph:
       compression: gz
       filename:
         - monarch-data/biogrid.nt.gz
-    clinvar:
-      name: "ClinVar (Monarch version 202007)"
-      type: nt
-      compression: gz
-      filename:
-        - monarch-data/clinvar.nt.gz
     coriell:
       name: "Coriell Institute for Medical Research (Monarch version 202007)"
       type: nt
@@ -80,7 +91,7 @@ merged_graph:
       type: nt
       compression: gz
       filename:
-        - /Users/deepak.unni3/GIT/kgx-deepakunni3/monarch-data/ctd.nt.gz
+        - monarch-data/ctd.nt.gz
     ensembl:
       name: "ENSEMBL (Monarch version 202007)"
       type: nt
@@ -92,7 +103,7 @@ merged_graph:
       type: nt
       compression: gz
       filename:
-        - /Users/deepak.unni3/GIT/kgx-deepakunni3/monarch-data/eom.nt.gz
+        - monarch-data/eom.nt.gz
     flybase:
       name: "FlyBase (Monarch version 202007)"
       type: nt
@@ -104,7 +115,7 @@ merged_graph:
       type: nt
       compression: gz
       filename:
-        - /Users/deepak.unni3/GIT/kgx-deepakunni3/monarch-data/genereviews.nt.gz
+        - monarch-data/genereviews.nt.gz
     go:
       name: "Gene Ontology (Monarch version 202007)"
       type: nt
@@ -122,7 +133,7 @@ merged_graph:
       type: nt
       compression: gz
       filename:
-        - /Users/deepak.unni3/GIT/kgx-deepakunni3/monarch-data/hgnc.nt.gz
+        - monarch-data/hgnc.nt.gz
     hpoa:
       name: "Human Phenotype Ontology (Monarch version 202007)"
       type: nt
@@ -207,12 +218,6 @@ merged_graph:
       compression: gz
       filename:
         - monarch-data/orphanet.nt.gz
-    panther:
-      name: "Protein ANalysis THrough Evolutionary Relationships (Monarch version 202007)"
-      type: nt
-      compression: gz
-      filename:
-        - monarch-data/panther.nt.gz
     reactome:
       name: "Reactome (Monarch version 202007)"
       type: nt
