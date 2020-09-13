@@ -43,7 +43,7 @@ configuration:
     has_quantifier: xsd:float
 
 merged_graph:
-  name: Monarch Graph
+  name: Monarch KG
   targets:
     monarch-ontologies:
       name: "Monarch Ontologies"
@@ -281,6 +281,14 @@ merged_graph:
             - HGNC
             - NCBIGene
             - ENSEMBL
+    - name: kgx.operations.summarize_graph.generate_graph_stats
+      args:
+        graph_name: Monarch KG
+        filename: monarch-kg_stats.yaml
+        node_facet_properties:
+          - provided_by
+        edge_facet_properties:
+          - provided_by
   destination:
     monarch-kg-tsv:
       type: tsv
