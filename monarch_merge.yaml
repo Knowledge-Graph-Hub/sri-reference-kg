@@ -1,5 +1,6 @@
 configuration:
   output_directory: monarch-data-parsed
+  checkpoint: true
   curie_map:
     # define non-canonical CURIE to IRI mappings
     MONARCH_BNODE: 'https://monarchinitiative.org/.well-known/genid/'
