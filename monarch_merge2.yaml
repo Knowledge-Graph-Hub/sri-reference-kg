@@ -213,8 +213,8 @@ merged_graph:
           - provided_by
         edge_facet_properties:
           - provided_by
-destination:
-  monarch-kg-tsv:
-    type: tsv
-    compression: tar.gz
-    filename: monarch-kg
+  destination:
+    monarch-kg-tsv:
+      type: tsv
+      compression: tar.gz
+      filename: monarch-kg
