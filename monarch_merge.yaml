@@ -48,7 +48,7 @@ merged_graph:
   targets:
     monarch-ontologies:
       name: "Monarch Ontologies"
-      type: json
+      type: obojson
       filename:
         - @DATA_DIR@/monarch-ontology-sri-translator.json
     panther:
