@@ -22,6 +22,7 @@ configuration:
     - 'http://purl.obolibrary.org/obo/IAO_0000142'
     - 'http://purl.obolibrary.org/obo/RO_0002162'
     - 'http://purl.obolibrary.org/obo/ERO_0000480'
+    - 'http://biohackathon.org/resource/faldo#reference'
   predicate_mappings:
     # map predicates non-canonical predicates to node/edge properties
     'http://www.geneontology.org/formats/oboInOwl#hasDbXref': xref
@@ -37,6 +38,8 @@ configuration:
     'http://purl.obolibrary.org/obo/ERO_0000480': has_url
     'http://purl.org/pav/createdOn': created_on
     'https://monarchinitiative.org/onset': onset
+    'http://purl.org/dc/elements/1.1/source': source
+    'http://biohackathon.org/resource/faldo#reference': has_reference
   property_types:
     # define the type for non-canonical node/edge properties
     assertion_confidence_score: xsd:integer
