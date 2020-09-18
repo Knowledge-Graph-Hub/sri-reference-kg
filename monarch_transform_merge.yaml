@@ -1,0 +1,300 @@
+configuration:
+  output_directory: @OUTPUT_DIR@
+  checkpoint: true
+  curie_map:
+    # define non-canonical CURIE to IRI mappings
+    MONARCH_BNODE: 'https://monarchinitiative.org/.well-known/genid/'
+    MonarchArchive: 'https://archive.monarchinitiative.org/#'
+    HGNC: 'https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:'
+    NCBIGene: 'https://www.ncbi.nlm.nih.gov/gene/'
+    OMIM: 'http://omim.org/entry/'
+    OMIMPS: 'http://www.omim.org/phenotypicSeries/'
+    EC: 'https://www.enzyme-database.org/query.php?ec='
+    MESH: 'http://id.nlm.nih.gov/mesh/'
+    EFO: 'http://www.ebi.ac.uk/efo/EFO_'
+    OMIA: 'https://omia.org/OMIA'
+    VGNC: 'https://vertebrate.genenames.org/data/gene-symbol-report/#!/vgnc_id/'
+    AspGD_REF: 'http://www.aspergillusgenome.org/cgi-bin/reference/reference.pl?dbid='
+    AspGD: 'http://www.aspergillusgenome.org/cgi-bin/locus.pl?dbid='
+  node_properties:
+    # define predicates that are to be treated as direct node/edge properties
+    - 'http://www.geneontology.org/formats/oboInOwl#hasDbXref'
+    - 'http://purl.obolibrary.org/obo/IAO_0000142'
+    - 'http://purl.obolibrary.org/obo/RO_0002162'
+    - 'http://purl.obolibrary.org/obo/ERO_0000480'
+    - 'http://biohackathon.org/resource/faldo#reference'
+  predicate_mappings:
+    # map predicates non-canonical predicates to node/edge properties
+    'http://www.geneontology.org/formats/oboInOwl#hasDbXref': xref
+    'http://purl.obolibrary.org/obo/IAO_0000142': mentions
+    'http://purl.obolibrary.org/obo/IAO_0000004': has_measurement_value
+    'http://purl.obolibrary.org/obo/SEPIO_0000111': is_assertion_supported_by
+    'http://purl.obolibrary.org/obo/STATO_0000129': has_value
+    'http://purl.obolibrary.org/obo/GENO_0000418': has_affected_feature
+    'http://purl.obolibrary.org/obo/GENO_0000382': has_variant_part
+    'http://purl.obolibrary.org/obo/GENO_0000580': has_qualifier
+    'http://purl.obolibrary.org/obo/GENO_0000866': has_quantifier
+    'https://monarchinitiative.org/frequencyOfPhenotype': frequency_of_phenotype
+    'http://purl.obolibrary.org/obo/ERO_0000480': has_url
+    'http://purl.org/pav/createdOn': created_on
+    'https://monarchinitiative.org/onset': onset
+    'http://purl.org/dc/elements/1.1/source': source
+    'http://biohackathon.org/resource/faldo#reference': has_reference
+  property_types:
+    # define the type for non-canonical node/edge properties
+    assertion_confidence_score: xsd:integer
+    has_value: xsd:float
+    has_quantifier: xsd:float
+
+merged_graph:
+  name: Monarch KG
+  targets:
+    monarch-ontologies:
+      name: "Monarch Ontologies"
+      type: json
+      filename:
+        - @DATA_DIR@/monarch-ontology-sri-translator.json
+    panther:
+      name: "Protein ANalysis THrough Evolutionary Relationships (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/panther.nt.gz
+    clinvar:
+      name: "ClinVar (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/clinvar.nt.gz
+    animalqtldb:
+      name: "Animal QTL db (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/animalqtldb.nt.gz
+    bgee:
+      name: "Bgee Gene expression data in animals (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/bgee.nt.gz
+    biogrid:
+      name: "Biological General Repository for Interaction Datasets (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/biogrid.nt.gz
+    coriell:
+      name: "Coriell Institute for Medical Research (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/coriell.nt.gz
+    ctd:
+      name: "Comparative Toxicogenomics Database (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/ctd.nt.gz
+    ensembl:
+      name: "ENSEMBL (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/ensembl.nt.gz
+    eom:
+      name: "Elements of Morphology (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/eom.nt.gz
+    flybase:
+      name: "FlyBase (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/flybase.nt.gz
+    genereviews:
+      name: "Gene Reviews (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/genereviews.nt.gz
+    go:
+      name: "Gene Ontology (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/go.nt.gz
+    gwascatalog:
+      name: "NHGRI-EBI Catalog of published genome-wide association studies (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/gwascatalog.nt.gz
+    hgnc:
+      name: "HGNC (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/hgnc.nt.gz
+    hpoa:
+      name: "Human Phenotype Ontology (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/hpoa.nt.gz
+    impc:
+      name: "International Mouse Phenotyping Consortium (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/impc.nt.gz
+    kegg:
+      name: "Kyoto Encyclopedia of Genes and Genomes (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/kegg.nt.gz
+    mgi:
+      name: "Mouse Genome Informatics (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/mgi.nt.gz
+    mgislim:
+      name: "MonarchArchive:mgislim (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/mgislim.nt.gz
+    mmrrc:
+      name: "Mutant Mouse Regional Resource Centers (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/mmrrc.nt.gz
+    monarch:
+      name: "The Monarch Initiative (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/monarch.nt.gz
+    monochrom:
+      name: "Monarch Chromosome Ontology (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/monochrom.nt.gz
+    mpd:
+      name: "Mouse Phenome Database (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/mpd.nt.gz
+      mychem:
+        name: "BioThings chemical and drug annotation data (Monarch version @VERSION@)"
+        type: nt
+        compression: gz
+        filename:
+          - @DATA_DIR@/mychem.nt.gz
+    ncbigene:
+      name: "National Center for Biotechnology Information (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/ncbigene.nt.gz
+    omia:
+      name: "Online Mendelian Inheritance in Animals (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/omia.nt.gz
+    omim:
+      name: "Online Mendelian Inheritance in Man (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/omim.nt.gz
+    orphanet:
+      name: "Orphanet (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/orphanet.nt.gz
+    reactome:
+      name: "Reactome (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/reactome.nt.gz
+    rgd:
+      name: "Rat Genome Database (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/rgd.nt.gz
+    sgd:
+      name: "Saccharomyces Genome Database (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/sgd.nt.gz
+    string:
+      name: "Known and predicted protein-protein interactions (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/string.nt.gz
+    ucscbands:
+      name: "UCSC Cytogenic Bands (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/ucscbands.nt.gz
+    udp:
+      name: "Undiagnosed Disease Program (Monarch version 201803)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/udp.nt.gz
+    wormbase:
+      name: "WormBase (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/wormbase.nt.gz
+    zfin:
+      name: "Zebra Fish Information Network (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/zfin.nt.gz
+    zfinslim:
+      name: "Simplified ZFIN (Monarch version @VERSION@)"
+      type: nt
+      compression: gz
+      filename:
+        - @DATA_DIR@/zfinslim.nt.gz
+  operations:
+    - name: kgx.operations.clique_merge.clique_merge
+      args:
+        leader_annotation: cliqueLeader
+        prefix_prioritization_map:
+          'biolink:NamedThing':
+            - HGNC
+            - NCBIGene
+            - ENSEMBL
+    - name: kgx.operations.summarize_graph.generate_graph_stats
+      args:
+        graph_name: Monarch KG
+        filename: monarch-kg_stats.yaml
+        node_facet_properties:
+          - provided_by
+        edge_facet_properties:
+          - provided_by
+  destination:
+    monarch-kg-tsv:
+      type: tsv
+      compression: tar.gz
+      filename: monarch-kg

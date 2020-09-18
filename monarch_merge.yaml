@@ -1,281 +1,201 @@
+# Use this YAML to load from KGX TSVs of Monarch data sources
 configuration:
   output_directory: @OUTPUT_DIR@
-  checkpoint: true
-  curie_map:
-    # define non-canonical CURIE to IRI mappings
-    MONARCH_BNODE: 'https://monarchinitiative.org/.well-known/genid/'
-    MonarchArchive: 'https://archive.monarchinitiative.org/#'
-    HGNC: 'https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:'
-    NCBIGene: 'https://www.ncbi.nlm.nih.gov/gene/'
-    OMIM: 'http://omim.org/entry/'
-    OMIMPS: 'http://www.omim.org/phenotypicSeries/'
-    EC: 'https://www.enzyme-database.org/query.php?ec='
-    MESH: 'http://id.nlm.nih.gov/mesh/'
-    EFO: 'http://www.ebi.ac.uk/efo/EFO_'
-    OMIA: 'https://omia.org/OMIA'
-    VGNC: 'https://vertebrate.genenames.org/data/gene-symbol-report/#!/vgnc_id/'
-    AspGD_REF: 'http://www.aspergillusgenome.org/cgi-bin/reference/reference.pl?dbid='
-    AspGD: 'http://www.aspergillusgenome.org/cgi-bin/locus.pl?dbid='
-  node_properties:
-    # define predicates that are to be treated as direct node/edge properties
-    - 'http://www.geneontology.org/formats/oboInOwl#hasDbXref'
-    - 'http://purl.obolibrary.org/obo/IAO_0000142'
-    - 'http://purl.obolibrary.org/obo/RO_0002162'
-    - 'http://purl.obolibrary.org/obo/ERO_0000480'
-    - 'http://biohackathon.org/resource/faldo#reference'
-  predicate_mappings:
-    # map predicates non-canonical predicates to node/edge properties
-    'http://www.geneontology.org/formats/oboInOwl#hasDbXref': xref
-    'http://purl.obolibrary.org/obo/IAO_0000142': mentions
-    'http://purl.obolibrary.org/obo/IAO_0000004': has_measurement_value
-    'http://purl.obolibrary.org/obo/SEPIO_0000111': is_assertion_supported_by
-    'http://purl.obolibrary.org/obo/STATO_0000129': has_value
-    'http://purl.obolibrary.org/obo/GENO_0000418': has_affected_feature
-    'http://purl.obolibrary.org/obo/GENO_0000382': has_variant_part
-    'http://purl.obolibrary.org/obo/GENO_0000580': has_qualifier
-    'http://purl.obolibrary.org/obo/GENO_0000866': has_quantifier
-    'https://monarchinitiative.org/frequencyOfPhenotype': frequency_of_phenotype
-    'http://purl.obolibrary.org/obo/ERO_0000480': has_url
-    'http://purl.org/pav/createdOn': created_on
-    'https://monarchinitiative.org/onset': onset
-    'http://purl.org/dc/elements/1.1/source': source
-    'http://biohackathon.org/resource/faldo#reference': has_reference
-  property_types:
-    # define the type for non-canonical node/edge properties
-    assertion_confidence_score: xsd:integer
-    has_value: xsd:float
-    has_quantifier: xsd:float
+  checkpoint: false
 
 merged_graph:
   name: Monarch KG
   targets:
     monarch-ontologies:
-      name: "Monarch Ontologies"
-      type: json
+      type: tsv
       filename:
-        - @DATA_DIR@/monarch-ontology-sri-translator.json
+        - @DATA_DIR@/monarch-ontologies_nodes.tsv
+        - @DATA_DIR@/monarch-ontologies_edges.tsv
     panther:
-      name: "Protein ANalysis THrough Evolutionary Relationships (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/panther.nt.gz
+        - @DATA_DIR@/panther_nodes.tsv
+        - @DATA_DIR@/panther_edges.tsv
     clinvar:
-      name: "ClinVar (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/clinvar.nt.gz
+        - @DATA_DIR@/clinvar_nodes.tsv
+        - @DATA_DIR@/clinvar_edges.tsv
     animalqtldb:
-      name: "Animal QTL db (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/animalqtldb.nt.gz
+        - @DATA_DIR@/animalqtldb_nodes.tsv
+        - @DATA_DIR@/animalqtldb_edges.tsv
     bgee:
-      name: "Bgee Gene expression data in animals (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/bgee.nt.gz
+        - @DATA_DIR@/bgee_nodes.tsv
+        - @DATA_DIR@/bgee_edges.tsv
     biogrid:
-      name: "Biological General Repository for Interaction Datasets (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/biogrid.nt.gz
+        - @DATA_DIR@/biogrid_nodes.tsv
+        - @DATA_DIR@/biogrid_edges.tsv
     coriell:
-      name: "Coriell Institute for Medical Research (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/coriell.nt.gz
+        - @DATA_DIR@/coriell_nodes.tsv
+        - @DATA_DIR@/coriell_edges.tsv
     ctd:
-      name: "Comparative Toxicogenomics Database (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/ctd.nt.gz
+        - @DATA_DIR@/ctd_nodes.tsv
+        - @DATA_DIR@/ctd_edges.tsv
     ensembl:
-      name: "ENSEMBL (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/ensembl.nt.gz
+        - @DATA_DIR@/ensembl_nodes.tsv
+        - @DATA_DIR@/ensembl_edges.tsv
     eom:
-      name: "Elements of Morphology (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/eom.nt.gz
+        - @DATA_DIR@/eom_nodes.tsv
+        - @DATA_DIR@/eom_edges.tsv
     flybase:
-      name: "FlyBase (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/flybase.nt.gz
+        - @DATA_DIR@/flybase_nodes.tsv
+        - @DATA_DIR@/flybase_edges.tsv
     genereviews:
-      name: "Gene Reviews (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/genereviews.nt.gz
+        - @DATA_DIR@/genereviews_nodes.tsv
+        - @DATA_DIR@/genereviews_edges.tsv
     go:
-      name: "Gene Ontology (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/go.nt.gz
+        - @DATA_DIR@/go_nodes.tsv
+        - @DATA_DIR@/go_edges.tsv
     gwascatalog:
-      name: "NHGRI-EBI Catalog of published genome-wide association studies (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/gwascatalog.nt.gz
+        - @DATA_DIR@/gwascatalog_nodes.tsv
+        - @DATA_DIR@/gwascatalog_edges.tsv
     hgnc:
-      name: "HGNC (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/hgnc.nt.gz
+        - @DATA_DIR@/hgnc_nodes.tsv
+        - @DATA_DIR@/hgnc_edges.tsv
     hpoa:
-      name: "Human Phenotype Ontology (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/hpoa.nt.gz
+        - @DATA_DIR@/hpoa_nodes.tsv
+        - @DATA_DIR@/hpoa_edges.tsv
     impc:
-      name: "International Mouse Phenotyping Consortium (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/impc.nt.gz
+        - @DATA_DIR@/impc_nodes.tsv
+        - @DATA_DIR@/impc_edges.tsv
     kegg:
-      name: "Kyoto Encyclopedia of Genes and Genomes (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/kegg.nt.gz
+        - @DATA_DIR@/kegg_nodes.tsv
+        - @DATA_DIR@/kegg_edges.tsv
     mgi:
-      name: "Mouse Genome Informatics (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/mgi.nt.gz
-  #  mgislim:
-  #    name: "MonarchArchive:mgislim (Monarch version @VERSION@)"
-  #    type: nt
-  #    compression: gz
-  #    filename:
-  #      - @DATA_DIR@/mgislim.nt.gz
-    mmrrc:
-      name: "Mutant Mouse Regional Resource Centers (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+        - @DATA_DIR@/mgi_nodes.tsv
+        - @DATA_DIR@/mgi_edges.tsv
+    mgislim:
+      type: tsv
       filename:
-        - @DATA_DIR@/mmrrc.nt.gz
+        - @DATA_DIR@/mgislim_nodes.tsv
+        - @DATA_DIR@/mgislim_edges.tsv
     monarch:
-      name: "The Monarch Initiative (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/monarch.nt.gz
-    monochrom:
-      name: "Monarch Chromosome Ontology (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+        - @DATA_DIR@/monarch_nodes.tsv
+        - @DATA_DIR@/monarch_edges.tsv
+    monarch:
+      type: tsv
       filename:
-        - @DATA_DIR@/monochrom.nt.gz
-    mpd:
-      name: "Mouse Phenome Database (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+        - @DATA_DIR@/monarch_nodes.tsv
+        - @DATA_DIR@/monarch_edges.tsv
+    mychem:
+      type: tsv
       filename:
-        - @DATA_DIR@/mpd.nt.gz
-  #  mychem:
-  #    name: "BioThings chemical and drug annotation data (Monarch version @VERSION@)"
-  #    type: nt
-  #    compression: gz
-  #    filename:
-  #      - @DATA_DIR@/mychem.nt.gz
+        - @DATA_DIR@/mychem_nodes.tsv
+        - @DATA_DIR@/mychem_edges.tsv
+    mychem:
+      type: tsv
+      filename:
+        - @DATA_DIR@/mychem_nodes.tsv
+        - @DATA_DIR@/mychem_edges.tsv
+    mychem:
+      type: tsv
+      filename:
+        - @DATA_DIR@/mychem_nodes.tsv
+        - @DATA_DIR@/mychem_edges.tsv
     ncbigene:
-      name: "National Center for Biotechnology Information (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/ncbigene.nt.gz
+        - @DATA_DIR@/ncbigene_nodes.tsv
+        - @DATA_DIR@/ncbigene_edges.tsv
     omia:
-      name: "Online Mendelian Inheritance in Animals (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/omia.nt.gz
+        - @DATA_DIR@/omia_nodes.tsv
+        - @DATA_DIR@/omia_edges.tsv
     omim:
-      name: "Online Mendelian Inheritance in Man (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/omim.nt.gz
+        - @DATA_DIR@/omim_nodes.tsv
+        - @DATA_DIR@/omim_edges.tsv
     orphanet:
-      name: "Orphanet (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/orphanet.nt.gz
+        - @DATA_DIR@/orphanet_nodes.tsv
+        - @DATA_DIR@/orphanet_edges.tsv
     reactome:
-      name: "Reactome (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/reactome.nt.gz
+        - @DATA_DIR@/reactome_nodes.tsv
+        - @DATA_DIR@/reactome_edges.tsv
     rgd:
-      name: "Rat Genome Database (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/rgd.nt.gz
+        - @DATA_DIR@/rgd_nodes.tsv
+        - @DATA_DIR@/rgd_edges.tsv
     sgd:
-      name: "Saccharomyces Genome Database (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/sgd.nt.gz
+        - @DATA_DIR@/sgd_nodes.tsv
+        - @DATA_DIR@/sgd_edges.tsv
     string:
-      name: "Known and predicted protein-protein interactions (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/string.nt.gz
+        - @DATA_DIR@/string_nodes.tsv
+        - @DATA_DIR@/string_edges.tsv
     ucscbands:
-      name: "UCSC Cytogenic Bands (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/ucscbands.nt.gz
+        - @DATA_DIR@/ucscbands_nodes.tsv
+        - @DATA_DIR@/ucscbands_edges.tsv
     udp:
-      name: "Undiagnosed Disease Program (Monarch version 201803)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/udp.nt.gz
+        - @DATA_DIR@/udp_nodes.tsv
+        - @DATA_DIR@/udp_edges.tsv
     wormbase:
-      name: "WormBase (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/wormbase.nt.gz
+        - @DATA_DIR@/wormbase_nodes.tsv
+        - @DATA_DIR@/wormbase_edges.tsv
     zfin:
-      name: "Zebra Fish Information Network (Monarch version @VERSION@)"
-      type: nt
-      compression: gz
+      type: tsv
       filename:
-        - @DATA_DIR@/zfin.nt.gz
-#    zfinslim:
-#      name: "Simplified ZFIN (Monarch version @VERSION@)"
-#      type: nt
-#      compression: gz
-#      filename:
-#        - @DATA_DIR@/zfinslim.nt.gz
+        - @DATA_DIR@/zfin_nodes.tsv
+        - @DATA_DIR@/zfin_edges.tsv
+    zfinslim:
+      type: tsv
+      filename:
+        - @DATA_DIR@/zfinslim_nodes.tsv
+        - @DATA_DIR@/zfinslim_edges.tsv
   operations:
     - name: kgx.operations.clique_merge.clique_merge
       args:
@@ -296,5 +216,5 @@ merged_graph:
   destination:
     monarch-kg-tsv:
       type: tsv
-      compression: tar.gz
+      compression: None
       filename: monarch-kg
