@@ -22,6 +22,12 @@ This can be achieved by parsing the N-Triples through [KGX](https://github.com/N
 The [monarch-transform.yaml](monarch-transform.yaml) lists all the sources that are transformed as part of this workflow. Each source has its own specific properties to facilitate the parsing of the N-Triples by KGX. The final end product of this workflow is a TSV in the [KGX interchange format](https://github.com/NCATS-Tangerine/kgx/blob/master/data-preparation.md)
 
 
-## Running the merge
+## Running the workflow
 
-kgx merge --processes 4 monarch_merge.yaml
+There is a `Makefile` that runs the following workflow,
+- Transform all Monarch N-Triples to KGX TSVs using `kgx merge`
+- Load all KGX TSVs and merge into a single graph using `kgx merge`
+- Create a Neo4j Docker container and load the merged graph into Neo4j using `kgx neo4j-upload`
+- Compress the Neo4j data directory into an archive
+
+
