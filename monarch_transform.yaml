@@ -197,12 +197,6 @@ merged_graph:
       compression: gz
       filename:
         - @DATA_DIR@/mpd.nt.gz
-    mychem:
-     name: "BioThings chemical and drug annotation data (Monarch version @VERSION@)"
-     type: nt
-     compression: gz
-     filename:
-       - @DATA_DIR@/mychem.nt.gz
     ncbigene:
       name: "National Center for Biotechnology Information (Monarch version @VERSION@)"
       type: nt

@@ -111,31 +111,26 @@ merged_graph:
       filename:
         - @DATA_DIR@/mgislim_nodes.tsv
         - @DATA_DIR@/mgislim_edges.tsv
+    mmrrc:
+      type: tsv
+      filename:
+        - @DATA_DIR@/mmrrc_nodes.tsv
+        - @DATA_DIR@/mmrrc_edges.tsv
     monarch:
       type: tsv
       filename:
         - @DATA_DIR@/monarch_nodes.tsv
         - @DATA_DIR@/monarch_edges.tsv
-    monarch:
+    monochrom:
       type: tsv
       filename:
-        - @DATA_DIR@/monarch_nodes.tsv
-        - @DATA_DIR@/monarch_edges.tsv
-    mychem:
+        - @DATA_DIR@/monochrom_nodes.tsv
+        - @DATA_DIR@/monochrom_edges.tsv
+    mpd:
       type: tsv
       filename:
-        - @DATA_DIR@/mychem_nodes.tsv
-        - @DATA_DIR@/mychem_edges.tsv
-    mychem:
-      type: tsv
-      filename:
-        - @DATA_DIR@/mychem_nodes.tsv
-        - @DATA_DIR@/mychem_edges.tsv
-    mychem:
-      type: tsv
-      filename:
-        - @DATA_DIR@/mychem_nodes.tsv
-        - @DATA_DIR@/mychem_edges.tsv
+        - @DATA_DIR@/mpd_nodes.tsv
+        - @DATA_DIR@/mpd_edges.tsv
     ncbigene:
       type: tsv
       filename:
