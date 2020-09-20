@@ -11,6 +11,11 @@ merged_graph:
       filename:
         - @DATA_DIR@/monarch-ontologies_nodes.tsv
         - @DATA_DIR@/monarch-ontologies_edges.tsv
+    chebi:
+      type: tsv
+      filename:
+        - @DATA_DIR@/chebi_nodes.tsv
+        - @DATA_DIR@/chebi_edges.tsv
     panther:
       type: tsv
       filename:

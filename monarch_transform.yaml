@@ -54,6 +54,11 @@ merged_graph:
       type: obojson
       filename:
         - @DATA_DIR@/monarch-ontology-sri-translator.json
+    chebi:
+      name: "ChEBI"
+      type: obojson
+      filename:
+        - @DATA_DIR@/chebi.json
     panther:
       name: "Protein ANalysis THrough Evolutionary Relationships (Monarch version @VERSION@)"
       type: nt
