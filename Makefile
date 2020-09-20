@@ -6,6 +6,7 @@ OUTPUT_DIR=monarch-data-parsed
 PROCESSES=1
 NEO4J_DATA_DIR=`pwd`/neo_data
 SUFFIX=build
+VERSION=202009
 
 print-vars:
 	@echo "======================================================="
@@ -20,10 +21,10 @@ install:
 	pip install --no-cache-dir --force-reinstall -r requirements.txt
 
 prepare-transform-yaml: print-vars
-	@sed 's/@DATA_DIR@/$(DATA_DIR)/g' monarch_transform.yaml | sed 's/@OUTPUT_DIR@/$(OUTPUT_DIR)/g' > monarch_transform_$(SUFFIX).yaml
+	@sed 's/@DATA_DIR@/$(DATA_DIR)/g' monarch_transform.yaml | sed 's/@OUTPUT_DIR@/$(OUTPUT_DIR)/g' | sed 's/@VERSION@/202009/g' > monarch_transform_$(SUFFIX).yaml
 
 prepare-merge-yaml: print-vars
-	@sed 's/@DATA_DIR@/$(OUTPUT_DIR)/g' monarch_merge.yaml | sed 's/@OUTPUT_DIR@/$(OUTPUT_DIR)/g' > monarch_merge_$(SUFFIX).yaml
+	@sed 's/@DATA_DIR@/$(OUTPUT_DIR)/g' monarch_merge.yaml | sed 's/@OUTPUT_DIR@/$(OUTPUT_DIR)/g' | sed 's/@VERSION@/202009/g' > monarch_merge_$(SUFFIX).yaml
 
 transform: prepare-transform-yaml
 	@echo "Running kgx to transform data in $(DATA_DIR) into TSVs and write to $(OUTPUT_DIR)"
