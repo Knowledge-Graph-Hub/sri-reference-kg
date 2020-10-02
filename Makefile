@@ -7,11 +7,14 @@ PROCESSES=1
 NEO4J_DATA_DIR=`pwd`/neo_data
 SUFFIX=build
 VERSION=202009
+SRI_VERSION=0.3.0
 
 print-vars:
 	@echo "======================================================="
 	@echo "Data directory (DATA_DIR): $(DATA_DIR)"
+	@echo "Data version (VERSION): $(DATA_VERSION)"
 	@echo "Output directory (OUTPUT_DIR): $(OUTPUT_DIR)"
+	@echo "KG Version (SRI_VERSION): $(SRI_VERSION)"
 	@echo "Neo4j data directory (NEO4J_DATA_DIR): $(NEO4J_DATA_DIR)"
 	@echo "Suffix for generated artifacts (SUFFIX): $(SUFFIX)"
 	@echo "Number of processes (PROCESSES): $(OUTPUT_DIR)"
@@ -21,10 +24,10 @@ install:
 	pip install --no-cache-dir --force-reinstall -r requirements.txt
 
 prepare-transform-yaml: print-vars
-	@sed 's/@DATA_DIR@/$(DATA_DIR)/g' monarch_transform.yaml | sed 's/@OUTPUT_DIR@/$(OUTPUT_DIR)/g' | sed 's/@VERSION@/202009/g' > monarch_transform_$(SUFFIX).yaml
+	@sed 's/@DATA_DIR@/$(DATA_DIR)/g' monarch_transform.yaml | sed 's/@OUTPUT_DIR@/$(OUTPUT_DIR)/g' | sed 's/@VERSION@/$(VERSION)/g' | sed 's/@SRI_VERSION@/$(SRI_VERSION)/g' > monarch_transform_$(SUFFIX).yaml
 
 prepare-merge-yaml: print-vars
-	@sed 's/@DATA_DIR@/$(OUTPUT_DIR)/g' monarch_merge.yaml | sed 's/@OUTPUT_DIR@/$(OUTPUT_DIR)/g' | sed 's/@VERSION@/202009/g' > monarch_merge_$(SUFFIX).yaml
+	@sed 's/@DATA_DIR@/$(OUTPUT_DIR)/g' monarch_merge.yaml | sed 's/@OUTPUT_DIR@/$(OUTPUT_DIR)/g' | sed 's/@VERSION@/$(VERSION)/g' | sed 's/@SRI_VERSION@/$(SRI_VERSION)/g' > monarch_merge_$(SUFFIX).yaml
 
 transform: prepare-transform-yaml
 	@echo "Running kgx to transform data in $(DATA_DIR) into TSVs and write to $(OUTPUT_DIR)"
