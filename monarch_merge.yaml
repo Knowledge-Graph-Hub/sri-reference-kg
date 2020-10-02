@@ -4,198 +4,236 @@ configuration:
   checkpoint: false
 
 merged_graph:
-  name: Monarch KG
-  targets:
+  name: SRI Reference KG @SRI_VERSION@
+  source:
     monarch-ontologies:
-      type: tsv
-      filename:
-        - @DATA_DIR@/monarch-ontologies_nodes.tsv
-        - @DATA_DIR@/monarch-ontologies_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/monarch-ontologies_nodes.tsv
+          - @DATA_DIR@/monarch-ontologies_edges.tsv
     chebi:
-      type: tsv
-      filename:
-        - @DATA_DIR@/chebi_nodes.tsv
-        - @DATA_DIR@/chebi_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/chebi_nodes.tsv
+          - @DATA_DIR@/chebi_edges.tsv
     panther:
-      type: tsv
-      filename:
-        - @DATA_DIR@/panther_nodes.tsv
-        - @DATA_DIR@/panther_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/panther_nodes.tsv
+          - @DATA_DIR@/panther_edges.tsv
     clinvar:
-      type: tsv
-      filename:
-        - @DATA_DIR@/clinvar_nodes.tsv
-        - @DATA_DIR@/clinvar_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/clinvar_nodes.tsv
+          - @DATA_DIR@/clinvar_edges.tsv
     animalqtldb:
-      type: tsv
-      filename:
-        - @DATA_DIR@/animalqtldb_nodes.tsv
-        - @DATA_DIR@/animalqtldb_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/animalqtldb_nodes.tsv
+          - @DATA_DIR@/animalqtldb_edges.tsv
     bgee:
-      type: tsv
-      filename:
-        - @DATA_DIR@/bgee_nodes.tsv
-        - @DATA_DIR@/bgee_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/bgee_nodes.tsv
+          - @DATA_DIR@/bgee_edges.tsv
     biogrid:
-      type: tsv
-      filename:
-        - @DATA_DIR@/biogrid_nodes.tsv
-        - @DATA_DIR@/biogrid_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/biogrid_nodes.tsv
+          - @DATA_DIR@/biogrid_edges.tsv
     coriell:
-      type: tsv
-      filename:
-        - @DATA_DIR@/coriell_nodes.tsv
-        - @DATA_DIR@/coriell_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/coriell_nodes.tsv
+          - @DATA_DIR@/coriell_edges.tsv
     ctd:
-      type: tsv
-      filename:
-        - @DATA_DIR@/ctd_nodes.tsv
-        - @DATA_DIR@/ctd_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/ctd_nodes.tsv
+          - @DATA_DIR@/ctd_edges.tsv
     ensembl:
-      type: tsv
-      filename:
-        - @DATA_DIR@/ensembl_nodes.tsv
-        - @DATA_DIR@/ensembl_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/ensembl_nodes.tsv
+          - @DATA_DIR@/ensembl_edges.tsv
     eom:
-      type: tsv
-      filename:
-        - @DATA_DIR@/eom_nodes.tsv
-        - @DATA_DIR@/eom_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/eom_nodes.tsv
+          - @DATA_DIR@/eom_edges.tsv
     flybase:
-      type: tsv
-      filename:
-        - @DATA_DIR@/flybase_nodes.tsv
-        - @DATA_DIR@/flybase_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/flybase_nodes.tsv
+          - @DATA_DIR@/flybase_edges.tsv
     genereviews:
-      type: tsv
-      filename:
-        - @DATA_DIR@/genereviews_nodes.tsv
-        - @DATA_DIR@/genereviews_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/genereviews_nodes.tsv
+          - @DATA_DIR@/genereviews_edges.tsv
     go:
-      type: tsv
-      filename:
-        - @DATA_DIR@/go_nodes.tsv
-        - @DATA_DIR@/go_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/go_nodes.tsv
+          - @DATA_DIR@/go_edges.tsv
     gwascatalog:
-      type: tsv
-      filename:
-        - @DATA_DIR@/gwascatalog_nodes.tsv
-        - @DATA_DIR@/gwascatalog_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/gwascatalog_nodes.tsv
+          - @DATA_DIR@/gwascatalog_edges.tsv
     hgnc:
-      type: tsv
-      filename:
-        - @DATA_DIR@/hgnc_nodes.tsv
-        - @DATA_DIR@/hgnc_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/hgnc_nodes.tsv
+          - @DATA_DIR@/hgnc_edges.tsv
     hpoa:
-      type: tsv
-      filename:
-        - @DATA_DIR@/hpoa_nodes.tsv
-        - @DATA_DIR@/hpoa_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/hpoa_nodes.tsv
+          - @DATA_DIR@/hpoa_edges.tsv
     impc:
-      type: tsv
-      filename:
-        - @DATA_DIR@/impc_nodes.tsv
-        - @DATA_DIR@/impc_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/impc_nodes.tsv
+          - @DATA_DIR@/impc_edges.tsv
     kegg:
-      type: tsv
-      filename:
-        - @DATA_DIR@/kegg_nodes.tsv
-        - @DATA_DIR@/kegg_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/kegg_nodes.tsv
+          - @DATA_DIR@/kegg_edges.tsv
     mgi:
-      type: tsv
-      filename:
-        - @DATA_DIR@/mgi_nodes.tsv
-        - @DATA_DIR@/mgi_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/mgi_nodes.tsv
+          - @DATA_DIR@/mgi_edges.tsv
     mgislim:
-      type: tsv
-      filename:
-        - @DATA_DIR@/mgislim_nodes.tsv
-        - @DATA_DIR@/mgislim_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/mgislim_nodes.tsv
+          - @DATA_DIR@/mgislim_edges.tsv
     mmrrc:
-      type: tsv
-      filename:
-        - @DATA_DIR@/mmrrc_nodes.tsv
-        - @DATA_DIR@/mmrrc_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/mmrrc_nodes.tsv
+          - @DATA_DIR@/mmrrc_edges.tsv
     monarch:
-      type: tsv
-      filename:
-        - @DATA_DIR@/monarch_nodes.tsv
-        - @DATA_DIR@/monarch_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/monarch_nodes.tsv
+          - @DATA_DIR@/monarch_edges.tsv
     monochrom:
-      type: tsv
-      filename:
-        - @DATA_DIR@/monochrom_nodes.tsv
-        - @DATA_DIR@/monochrom_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/monochrom_nodes.tsv
+          - @DATA_DIR@/monochrom_edges.tsv
     mpd:
-      type: tsv
-      filename:
-        - @DATA_DIR@/mpd_nodes.tsv
-        - @DATA_DIR@/mpd_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/mpd_nodes.tsv
+          - @DATA_DIR@/mpd_edges.tsv
     ncbigene:
-      type: tsv
-      filename:
-        - @DATA_DIR@/ncbigene_nodes.tsv
-        - @DATA_DIR@/ncbigene_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/ncbigene_nodes.tsv
+          - @DATA_DIR@/ncbigene_edges.tsv
     omia:
-      type: tsv
-      filename:
-        - @DATA_DIR@/omia_nodes.tsv
-        - @DATA_DIR@/omia_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/omia_nodes.tsv
+          - @DATA_DIR@/omia_edges.tsv
     omim:
-      type: tsv
-      filename:
-        - @DATA_DIR@/omim_nodes.tsv
-        - @DATA_DIR@/omim_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/omim_nodes.tsv
+          - @DATA_DIR@/omim_edges.tsv
     orphanet:
-      type: tsv
-      filename:
-        - @DATA_DIR@/orphanet_nodes.tsv
-        - @DATA_DIR@/orphanet_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/orphanet_nodes.tsv
+          - @DATA_DIR@/orphanet_edges.tsv
     reactome:
-      type: tsv
-      filename:
-        - @DATA_DIR@/reactome_nodes.tsv
-        - @DATA_DIR@/reactome_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/reactome_nodes.tsv
+          - @DATA_DIR@/reactome_edges.tsv
     rgd:
-      type: tsv
-      filename:
-        - @DATA_DIR@/rgd_nodes.tsv
-        - @DATA_DIR@/rgd_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/rgd_nodes.tsv
+          - @DATA_DIR@/rgd_edges.tsv
     sgd:
-      type: tsv
-      filename:
-        - @DATA_DIR@/sgd_nodes.tsv
-        - @DATA_DIR@/sgd_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/sgd_nodes.tsv
+          - @DATA_DIR@/sgd_edges.tsv
     string:
-      type: tsv
-      filename:
-        - @DATA_DIR@/string_nodes.tsv
-        - @DATA_DIR@/string_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/string_nodes.tsv
+          - @DATA_DIR@/string_edges.tsv
     ucscbands:
-      type: tsv
-      filename:
-        - @DATA_DIR@/ucscbands_nodes.tsv
-        - @DATA_DIR@/ucscbands_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/ucscbands_nodes.tsv
+          - @DATA_DIR@/ucscbands_edges.tsv
     udp:
-      type: tsv
-      filename:
-        - @DATA_DIR@/udp_nodes.tsv
-        - @DATA_DIR@/udp_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/udp_nodes.tsv
+          - @DATA_DIR@/udp_edges.tsv
     wormbase:
-      type: tsv
-      filename:
-        - @DATA_DIR@/wormbase_nodes.tsv
-        - @DATA_DIR@/wormbase_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/wormbase_nodes.tsv
+          - @DATA_DIR@/wormbase_edges.tsv
     zfin:
-      type: tsv
-      filename:
-        - @DATA_DIR@/zfin_nodes.tsv
-        - @DATA_DIR@/zfin_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/zfin_nodes.tsv
+          - @DATA_DIR@/zfin_edges.tsv
     zfinslim:
-      type: tsv
-      filename:
-        - @DATA_DIR@/zfinslim_nodes.tsv
-        - @DATA_DIR@/zfinslim_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - @DATA_DIR@/zfinslim_nodes.tsv
+          - @DATA_DIR@/zfinslim_edges.tsv
   operations:
     - name: kgx.operations.clique_merge.clique_merge
       args:
@@ -207,14 +245,14 @@ merged_graph:
             - ENSEMBL
     - name: kgx.operations.summarize_graph.generate_graph_stats
       args:
-        graph_name: Monarch KG
-        filename: monarch-kg_stats.yaml
+        graph_name: SRI Reference KG @SRI_VERSION@
+        filename: sri-reference-kg-@SRI_VERSION@_stats.yaml
         node_facet_properties:
           - provided_by
         edge_facet_properties:
           - provided_by
   destination:
     monarch-kg-tsv:
-      type: tsv
+      format: tsv
       compression: None
-      filename: monarch-kg
+      filename: sri-reference-kg-@SRI_VERSION@
