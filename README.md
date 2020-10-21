@@ -59,3 +59,6 @@ To override the defaults,
 ```
 make all SUFFIX=build_20201021 PROCESSES=4 DATA_DIR=monarch-data OUTPUT_DIR=sri-reference-kg-0.3.0 KG_VERSION=0.3.0
 ```
+
+**Note:** To ensure that the pipeline runs end-to-end, you would need a machine that has at least 8 cores of CPU and 
+100GB in memory.
