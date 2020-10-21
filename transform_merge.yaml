@@ -25,7 +25,7 @@ configuration:
     - 'http://biohackathon.org/resource/faldo#reference'
   predicate_mappings:
     # map predicates non-canonical predicates to node/edge properties
-    'http://www.geneontology.org/formats/oboInOwl#hasDbXref': xref
+    'http://www.geneontology.org/formats/oboInOwl#hasDbXref': xrefs
     'http://purl.obolibrary.org/obo/IAO_0000142': mentions
     'http://purl.obolibrary.org/obo/IAO_0000004': has_measurement_value
     'http://purl.obolibrary.org/obo/SEPIO_0000111': is_assertion_supported_by
@@ -47,7 +47,7 @@ configuration:
     has_quantifier: xsd:float
 
 merged_graph:
-  name: SRI Reference KG @SRI_VERSION@
+  name: SRI Reference KG @KG_VERSION@
   source:
     monarch-ontologies:
       name: "Monarch Ontologies"
@@ -313,3 +313,25 @@ merged_graph:
         compression: gz
         filename:
         - @DATA_DIR@/zfinslim.nt.gz
+  operations:
+    - name: kgx.operations.clique_merge.clique_merge
+      args:
+        leader_annotation: cliqueLeader
+        prefix_prioritization_map:
+          'biolink:NamedThing':
+            - HGNC
+            - NCBIGene
+            - ENSEMBL
+    - name: kgx.operations.summarize_graph.generate_graph_stats
+      args:
+        graph_name: SRI Reference KG @KG_VERSION@
+        filename: sri-reference-kg-@KG_VERSION@_stats.yaml
+        node_facet_properties:
+          - provided_by
+        edge_facet_properties:
+          - provided_by
+  destination:
+    output-kg-tsv:
+      type: tsv
+      compression: tar.gz
+      filename: sri-reference-kg-@KG_VERSION@

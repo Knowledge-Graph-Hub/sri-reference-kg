@@ -25,7 +25,7 @@ configuration:
     - 'http://biohackathon.org/resource/faldo#reference'
   predicate_mappings:
     # map predicates non-canonical predicates to node/edge properties
-    'http://www.geneontology.org/formats/oboInOwl#hasDbXref': xref
+    'http://www.geneontology.org/formats/oboInOwl#hasDbXref': xrefs
     'http://purl.obolibrary.org/obo/IAO_0000142': mentions
     'http://purl.obolibrary.org/obo/IAO_0000004': has_measurement_value
     'http://purl.obolibrary.org/obo/SEPIO_0000111': is_assertion_supported_by
@@ -46,8 +46,8 @@ configuration:
     has_value: xsd:float
     has_quantifier: xsd:float
 
-merged_graph:
-  name: SRI Reference KG @SRI_VERSION@
+transform:
+  name: SRI Reference KG @KG_VERSION@
   source:
     monarch-ontologies:
       name: "Monarch Ontologies"
@@ -55,12 +55,20 @@ merged_graph:
         format: obojson
         filename:
           - @DATA_DIR@/monarch-ontology-sri-translator.json
+      output:
+        format: tsv
+        filename:
+          - monarch-ontologies
     chebi:
       name: "ChEBI"
       input:
         format: obojson
         filename:
           - @DATA_DIR@/chebi.json
+      output:
+        format: tsv
+        filename:
+          - chebi
     panther:
       name: "Protein ANalysis THrough Evolutionary Relationships (Monarch version @VERSION@)"
       input:
@@ -68,6 +76,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/panther.nt.gz
+      output:
+        format: tsv
+        filename:
+          - panther
     clinvar:
       name: "ClinVar (Monarch version @VERSION@)"
       input:
@@ -75,6 +87,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/clinvar.nt.gz
+      output:
+        format: tsv
+        filename:
+          - clinvar
     animalqtldb:
       name: "Animal QTL db (Monarch version @VERSION@)"
       input:
@@ -82,6 +98,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/animalqtldb.nt.gz
+      output:
+        format: tsv
+        filename:
+          - animalqtldb
     bgee:
       name: "Bgee Gene expression data in animals (Monarch version @VERSION@)"
       input:
@@ -89,6 +109,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/bgee.nt.gz
+      output:
+        format: tsv
+        filename:
+          - bgee
     biogrid:
       name: "Biological General Repository for Interaction Datasets (Monarch version @VERSION@)"
       input:
@@ -96,6 +120,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/biogrid.nt.gz
+      output:
+        format: tsv
+        filename:
+          - biogrid
     coriell:
       name: "Coriell Institute for Medical Research (Monarch version @VERSION@)"
       input:
@@ -103,6 +131,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/coriell.nt.gz
+      output:
+        format: tsv
+        filename:
+          - coriell
     ctd:
       name: "Comparative Toxicogenomics Database (Monarch version @VERSION@)"
       input:
@@ -110,6 +142,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/ctd.nt.gz
+      output:
+        format: tsv
+        filename:
+          - ctd
     ensembl:
       name: "ENSEMBL (Monarch version @VERSION@)"
       input:
@@ -117,6 +153,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/ensembl.nt.gz
+      output:
+        format: tsv
+        filename:
+          - ensembl
     eom:
       name: "Elements of Morphology (Monarch version @VERSION@)"
       input:
@@ -124,6 +164,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/eom.nt.gz
+      output:
+        format: tsv
+        filename:
+          - eom
     flybase:
       name: "FlyBase (Monarch version @VERSION@)"
       input:
@@ -131,6 +175,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/flybase.nt.gz
+      output:
+        format: tsv
+        filename:
+          - flybase
     genereviews:
       name: "Gene Reviews (Monarch version @VERSION@)"
       input:
@@ -138,6 +186,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/genereviews.nt.gz
+      output:
+        format: tsv
+        filename:
+          - genereviews
     go:
       name: "Gene Ontology (Monarch version @VERSION@)"
       input:
@@ -145,6 +197,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/go.nt.gz
+      output:
+        format: tsv
+        filename:
+          - go
     gwascatalog:
       name: "NHGRI-EBI Catalog of published genome-wide association studies (Monarch version @VERSION@)"
       input:
@@ -152,6 +208,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/gwascatalog.nt.gz
+      output:
+        format: tsv
+        filename:
+          - gwascatalog
     hgnc:
       name: "HGNC (Monarch version @VERSION@)"
       input:
@@ -159,6 +219,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/hgnc.nt.gz
+      output:
+        format: tsv
+        filename:
+          - hgnc
     hpoa:
       name: "Human Phenotype Ontology (Monarch version @VERSION@)"
       input:
@@ -166,6 +230,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/hpoa.nt.gz
+      output:
+        format: tsv
+        filename:
+          - hpoa
     impc:
       name: "International Mouse Phenotyping Consortium (Monarch version @VERSION@)"
       input:
@@ -173,6 +241,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/impc.nt.gz
+      output:
+        format: tsv
+        filename:
+          - impc
     kegg:
       name: "Kyoto Encyclopedia of Genes and Genomes (Monarch version @VERSION@)"
       input:
@@ -180,6 +252,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/kegg.nt.gz
+      output:
+        format: tsv
+        filename:
+          - kegg
     mgi:
       name: "Mouse Genome Informatics (Monarch version @VERSION@)"
       input:
@@ -187,6 +263,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/mgi.nt.gz
+      output:
+        format: tsv
+        filename:
+          - mgi
     mgislim:
       name: "MonarchArchive:mgislim (Monarch version @VERSION@)"
       input:
@@ -194,6 +274,10 @@ merged_graph:
         compression: gz
         filename:
         - @DATA_DIR@/mgislim.nt.gz
+      output:
+        format: tsv
+        filename:
+          - mgislim
     mmrrc:
       name: "Mutant Mouse Regional Resource Centers (Monarch version @VERSION@)"
       input:
@@ -201,6 +285,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/mmrrc.nt.gz
+      output:
+        format: tsv
+        filename:
+          - mmrrc
     monarch:
       name: "The Monarch Initiative (Monarch version @VERSION@)"
       input:
@@ -208,6 +296,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/monarch.nt.gz
+      output:
+        format: tsv
+        filename:
+          - monarch
     monochrom:
       name: "Monarch Chromosome Ontology (Monarch version @VERSION@)"
       input:
@@ -215,6 +307,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/monochrom.nt.gz
+      output:
+        format: tsv
+        filename:
+          - monochrom
     mpd:
       name: "Mouse Phenome Database (Monarch version @VERSION@)"
       input:
@@ -222,6 +318,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/mpd.nt.gz
+      output:
+        format: tsv
+        filename:
+          - mpd
     ncbigene:
       name: "National Center for Biotechnology Information (Monarch version @VERSION@)"
       input:
@@ -229,6 +329,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/ncbigene.nt.gz
+      output:
+        format: tsv
+        filename:
+          - ncbigene
     omia:
       name: "Online Mendelian Inheritance in Animals (Monarch version @VERSION@)"
       input:
@@ -236,6 +340,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/omia.nt.gz
+      output:
+        format: tsv
+        filename:
+          - omia
     omim:
       name: "Online Mendelian Inheritance in Man (Monarch version @VERSION@)"
       input:
@@ -243,6 +351,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/omim.nt.gz
+      output:
+        format: tsv
+        filename:
+          - omim
     orphanet:
       name: "Orphanet (Monarch version @VERSION@)"
       input:
@@ -250,6 +362,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/orphanet.nt.gz
+      output:
+        format: tsv
+        filename:
+          - orphanet
     reactome:
       name: "Reactome (Monarch version @VERSION@)"
       input:
@@ -257,6 +373,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/reactome.nt.gz
+      output:
+        format: tsv
+        filename:
+          - reactome
     rgd:
       name: "Rat Genome Database (Monarch version @VERSION@)"
       input:
@@ -264,6 +384,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/rgd.nt.gz
+      output:
+        format: tsv
+        filename:
+          - rgd
     sgd:
       name: "Saccharomyces Genome Database (Monarch version @VERSION@)"
       input:
@@ -271,6 +395,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/sgd.nt.gz
+      output:
+        format: tsv
+        filename:
+          - sgd
     string:
       name: "Known and predicted protein-protein interactions (Monarch version @VERSION@)"
       input:
@@ -278,6 +406,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/string.nt.gz
+      output:
+        format: tsv
+        filename:
+          - string
     ucscbands:
       name: "UCSC Cytogenic Bands (Monarch version @VERSION@)"
       input:
@@ -285,6 +417,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/ucscbands.nt.gz
+      output:
+        format: tsv
+        filename:
+          - ucscbands
     udp:
       name: "Undiagnosed Disease Program (Monarch version 201803)"
       input:
@@ -292,6 +428,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/udp.nt.gz
+      output:
+        format: tsv
+        filename:
+          - udp
     wormbase:
       name: "WormBase (Monarch version @VERSION@)"
       input:
@@ -299,6 +439,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/wormbase.nt.gz
+      output:
+        format: tsv
+        filename:
+          - wormbase
     zfin:
       name: "Zebra Fish Information Network (Monarch version @VERSION@)"
       input:
@@ -306,6 +450,10 @@ merged_graph:
         compression: gz
         filename:
           - @DATA_DIR@/zfin.nt.gz
+      output:
+        format: tsv
+        filename:
+          - zfin
     zfinslim:
       name: "Simplified ZFIN (Monarch version @VERSION@)"
       input:
@@ -313,25 +461,7 @@ merged_graph:
         compression: gz
         filename:
         - @DATA_DIR@/zfinslim.nt.gz
-  operations:
-    - name: kgx.operations.clique_merge.clique_merge
-      args:
-        leader_annotation: cliqueLeader
-        prefix_prioritization_map:
-          'biolink:NamedThing':
-            - HGNC
-            - NCBIGene
-            - ENSEMBL
-    - name: kgx.operations.summarize_graph.generate_graph_stats
-      args:
-        graph_name: SRI Reference KG @SRI_VERSION@
-        filename: sri-reference-kg-@SRI_VERSION@_stats.yaml
-        node_facet_properties:
-          - provided_by
-        edge_facet_properties:
-          - provided_by
-  destination:
-    monarch-kg-tsv:
-      type: tsv
-      compression: tar.gz
-      filename: sri-reference-kg-@SRI_VERSION@
+      output:
+        format: tsv
+        filename:
+          - zfinslim

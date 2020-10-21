@@ -1,20 +1,20 @@
 # All artifacts of the build should be preserved
 .SECONDARY:
 
-DATA_DIR=monarch-data
-OUTPUT_DIR=monarch-data-parsed
+DATA_DIR=data
+OUTPUT_DIR=data-parsed
 PROCESSES=1
 NEO4J_DATA_DIR=`pwd`/neo_data
 SUFFIX=build
-VERSION=202009
-SRI_VERSION=0.3.0
+DATA_VERSION=202009
+KG_VERSION=0.3.0
 
 print-vars:
 	@echo "======================================================="
 	@echo "Data directory (DATA_DIR): $(DATA_DIR)"
-	@echo "Data version (VERSION): $(DATA_VERSION)"
+	@echo "Data version (DATA_VERSION): $(DATA_VERSION)"
 	@echo "Output directory (OUTPUT_DIR): $(OUTPUT_DIR)"
-	@echo "KG Version (SRI_VERSION): $(SRI_VERSION)"
+	@echo "KG Version (KG_VERSION): $(KG_VERSION)"
 	@echo "Neo4j data directory (NEO4J_DATA_DIR): $(NEO4J_DATA_DIR)"
 	@echo "Suffix for generated artifacts (SUFFIX): $(SUFFIX)"
 	@echo "Number of processes (PROCESSES): $(OUTPUT_DIR)"
@@ -24,18 +24,18 @@ install:
 	pip install --no-cache-dir --force-reinstall -r requirements.txt
 
 prepare-transform-yaml: print-vars
-	@sed 's/@DATA_DIR@/$(DATA_DIR)/g' monarch_transform.yaml | sed 's/@OUTPUT_DIR@/$(OUTPUT_DIR)/g' | sed 's/@VERSION@/$(VERSION)/g' | sed 's/@SRI_VERSION@/$(SRI_VERSION)/g' > monarch_transform_$(SUFFIX).yaml
+	@sed 's/@DATA_DIR@/$(DATA_DIR)/g' transform.yaml | sed 's/@OUTPUT_DIR@/$(OUTPUT_DIR)/g' | sed 's/@VERSION@/$(DATA_VERSION)/g' | sed 's/@KG_VERSION@/$(KG_VERSION)/g' > transform_$(SUFFIX).yaml
 
 prepare-merge-yaml: print-vars
-	@sed 's/@DATA_DIR@/$(OUTPUT_DIR)/g' monarch_merge.yaml | sed 's/@OUTPUT_DIR@/$(OUTPUT_DIR)/g' | sed 's/@VERSION@/$(VERSION)/g' | sed 's/@SRI_VERSION@/$(SRI_VERSION)/g' > monarch_merge_$(SUFFIX).yaml
+	@sed 's/@DATA_DIR@/$(OUTPUT_DIR)/g' merge.yaml | sed 's/@OUTPUT_DIR@/$(OUTPUT_DIR)/g' | sed 's/@VERSION@/$(DATA_VERSION)/g' | sed 's/@KG_VERSION@/$(KG_VERSION)/g' > merge_$(SUFFIX).yaml
 
 transform: prepare-transform-yaml
 	@echo "Running kgx to transform data in $(DATA_DIR) into TSVs and write to $(OUTPUT_DIR)"
-	kgx transform --processes $(PROCESSES) --merge-config monarch_transform_$(SUFFIX).yaml >& kgx_transform_$(SUFFIX).log
+	kgx transform --processes $(PROCESSES) --transform-config transform_$(SUFFIX).yaml >& kgx_transform_$(SUFFIX).log
 
 merge: prepare-merge-yaml
 	@echo "Running kgx to merge data in $(OUTPUT_DIR) to create a merged graph and write to $(OUTPUT_DIR)"
-	kgx merge --processes $(PROCESSES) --merge-config monarch_merge_$(SUFFIX).yaml >& kgx_merge_$(SUFFIX).log
+	kgx merge --processes $(PROCESSES) --merge-config merge_$(SUFFIX).yaml >& kgx_merge_$(SUFFIX).log
 
 neo4j-docker: print-vars
 	@echo "Creating directory $(NEO4J_DATA_DIR)"
@@ -45,7 +45,7 @@ neo4j-docker: print-vars
 
 neo4j-upload: neo4j-docker
 	@echo "Running kgx to upload graph to Neo4j container"
-	kgx neo4j-upload --uri http://localhost:8484 --username neo4j --password test --input-format tsv $(OUTPUT_DIR)/monarch-kg_nodes.tsv $(OUTPUT_DIR)/monarch-kg_edges.tsv >& kgx_neo4j_upload_$(SUFFIX).log
+	kgx neo4j-upload --uri http://localhost:8484 --username neo4j --password test --input-format tsv $(OUTPUT_DIR)/sri-reference-kg-@KG_VERSION@_nodes.tsv $(OUTPUT_DIR)/sri-reference-kg-@KG_VERSION@_edges.tsv >& kgx_neo4j_upload_$(SUFFIX).log
 	@echo "Creating $(NEO4J_DATA_DIR)_$(SUFFIX).tar.gz archive..."
 	tar -cvzf $(NEO4J_DATA_DIR)_$(SUFFIX).tar.gz -C $(NEO4J_DATA_DIR) .
 
