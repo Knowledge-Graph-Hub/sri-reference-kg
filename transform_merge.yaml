@@ -25,7 +25,7 @@ configuration:
     - 'http://biohackathon.org/resource/faldo#reference'
   predicate_mappings:
     # map predicates non-canonical predicates to node/edge properties
-    'http://www.geneontology.org/formats/oboInOwl#hasDbXref': xrefs
+    'http://www.geneontology.org/formats/oboInOwl#hasDbXref': xref
     'http://purl.obolibrary.org/obo/IAO_0000142': mentions
     'http://purl.obolibrary.org/obo/IAO_0000004': has_measurement_value
     'http://purl.obolibrary.org/obo/SEPIO_0000111': is_assertion_supported_by
