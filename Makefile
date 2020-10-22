@@ -31,11 +31,11 @@ prepare-merge-yaml: print-vars
 
 transform: prepare-transform-yaml
 	@echo "Running kgx to transform data in $(DATA_DIR) into TSVs and write to $(OUTPUT_DIR)"
-	kgx transform --processes $(PROCESSES) --transform-config transform_$(SUFFIX).yaml >& kgx_transform_$(SUFFIX).log
+	kgx transform --processes $(PROCESSES) --transform-config transform_$(SUFFIX).yaml > kgx_transform_$(SUFFIX).log 2>&1
 
 merge: prepare-merge-yaml
 	@echo "Running kgx to merge data in $(OUTPUT_DIR) to create a merged graph and write to $(OUTPUT_DIR)"
-	kgx merge --processes $(PROCESSES) --merge-config merge_$(SUFFIX).yaml >& kgx_merge_$(SUFFIX).log
+	kgx merge --processes $(PROCESSES) --merge-config merge_$(SUFFIX).yaml > kgx_merge_$(SUFFIX).log 2>&1
 
 neo4j-docker: print-vars
 	@echo "Creating directory $(NEO4J_DATA_DIR)"
