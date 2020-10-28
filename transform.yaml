@@ -23,6 +23,7 @@ configuration:
     - 'http://purl.obolibrary.org/obo/RO_0002162'
     - 'http://purl.obolibrary.org/obo/ERO_0000480'
     - 'http://biohackathon.org/resource/faldo#reference'
+    - 'https://monarchinitiative.org/MONARCH_cliqueLeader'
   predicate_mappings:
     # map predicates non-canonical predicates to node/edge properties
     'http://www.geneontology.org/formats/oboInOwl#hasDbXref': xref
@@ -40,6 +41,7 @@ configuration:
     'https://monarchinitiative.org/onset': onset
     'http://purl.org/dc/elements/1.1/source': source
     'http://biohackathon.org/resource/faldo#reference': has_reference
+    'https://monarchinitiative.org/MONARCH_cliqueLeader': clique_leader
   property_types:
     # define the type for non-canonical node/edge properties
     assertion_confidence_score: xsd:integer

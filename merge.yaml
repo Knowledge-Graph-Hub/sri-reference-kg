@@ -243,6 +243,7 @@ merged_graph:
             - HGNC
             - NCBIGene
             - ENSEMBL
+        strict: false
     - name: kgx.operations.summarize_graph.generate_graph_stats
       args:
         graph_name: SRI Reference KG @KG_VERSION@
