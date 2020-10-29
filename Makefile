@@ -45,7 +45,7 @@ neo4j-docker: print-vars
 
 neo4j-upload: neo4j-docker
 	@echo "Running kgx to upload graph to Neo4j container"
-	kgx neo4j-upload --uri http://localhost:8484 --username neo4j --password test --input-format tsv $(OUTPUT_DIR)/sri-reference-kg-@KG_VERSION@_nodes.tsv $(OUTPUT_DIR)/sri-reference-kg-@KG_VERSION@_edges.tsv >& kgx_neo4j_upload_$(SUFFIX).log
+	kgx neo4j-upload --uri http://localhost:8484 --username neo4j --password test --input-format tsv $(OUTPUT_DIR)/sri-reference-kg-$(KG_VERSION)_nodes.tsv $(OUTPUT_DIR)/sri-reference-kg-$(KG_VERSION)_edges.tsv > kgx_neo4j_upload_$(SUFFIX).log 2>&1
 	@echo "Creating $(NEO4J_DATA_DIR)_$(SUFFIX).tar.gz archive..."
 	tar -cvzf $(NEO4J_DATA_DIR)_$(SUFFIX).tar.gz -C $(NEO4J_DATA_DIR) .
 
