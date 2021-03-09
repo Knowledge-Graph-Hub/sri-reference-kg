@@ -1,7 +1,7 @@
 configuration:
   output_directory: @OUTPUT_DIR@
   checkpoint: true
-  curie_map:
+  prefix_map:
     # define non-canonical CURIE to IRI mappings
     MONARCH_BNODE: 'https://monarchinitiative.org/.well-known/genid/'
     MonarchArchive: 'https://archive.monarchinitiative.org/#'
@@ -16,7 +16,7 @@ configuration:
     VGNC: 'https://vertebrate.genenames.org/data/gene-symbol-report/#!/vgnc_id/'
     AspGD_REF: 'http://www.aspergillusgenome.org/cgi-bin/reference/reference.pl?dbid='
     AspGD: 'http://www.aspergillusgenome.org/cgi-bin/locus.pl?dbid='
-  node_properties:
+  node_property_predicates:
     # define predicates that are to be treated as direct node/edge properties
     - 'http://www.geneontology.org/formats/oboInOwl#hasDbXref'
     - 'http://purl.obolibrary.org/obo/IAO_0000142'
