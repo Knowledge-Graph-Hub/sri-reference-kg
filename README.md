@@ -53,7 +53,7 @@ wget https://ci.monarchinitiative.org/view/pipelines/job/monarch-ontology-json-s
 
 And ChEBI in OBOGraph JSON form:
 ```sh
-wget ???
+wget http://kg-hub.berkeleybop.io/frozen_incoming_data/chebi.json.gz
 ```
 
 Then, compress all the files in the `data` folder:
