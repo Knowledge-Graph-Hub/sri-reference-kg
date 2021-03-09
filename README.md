@@ -34,12 +34,12 @@ process to generate an integrated KG.
 ## Getting all the required datasets
 
 First create a folder called `data`:
-```
+```sh
 mkdir data && cd data
 ```
 
 Then download all the required N-Triples to the `data` folder:
-```
+```sh
 wget -r -nd "https://archive.monarchinitiative.org/@DATA_VERSION@/rdf/blcategories/"
 ```
 
@@ -47,13 +47,36 @@ Where `@DATA_VERSION@` must be replaced with a proper data version from archive.
 
 
 Also be sure to get Monarch Ontologies in OBOGraph JSON form:
-```
+```sh
 wget https://ci.monarchinitiative.org/view/pipelines/job/monarch-ontology-json-sri/lastSuccessfulBuild/artifact/build/monarch-ontology-sri-translator.json
 ```
 
 And ChEBI in OBOGraph JSON form:
-```
+```sh
 wget ???
+```
+
+Then, compress all the files in the `data` folder:
+
+```sh
+pigz -p 2 -9r *
+```
+
+## Installing dependencies
+
+First set up a virtual environment,
+
+```sh
+# create a new virtual environment
+python3 -m venv env
+
+# active the virtual environment
+source env/bin/activate
+```
+
+Then install the dependencies listed in `requirements.txt`,
+```sh
+pip install -r requirements.txt
 ```
 
 
@@ -66,12 +89,12 @@ There is a `Makefile` that runs the following workflow,
 - Compress the Neo4j data directory into an archive
 
 To run the workflow,
-```
+```sh
 make all
 ```
 
 The `Makefile` relies on a set of arguments drive that behavior of the `Makefile` with the following defaults:
-```
+```sh
 DATA_DIR=data
 OUTPUT_DIR=data-parsed
 PROCESSES=1
@@ -82,7 +105,7 @@ KG_VERSION=0.3.0
 ```
 
 To override the defaults,
-```
+```sh
 make all SUFFIX=build_20201021 PROCESSES=4 DATA_DIR=monarch-data OUTPUT_DIR=sri-reference-kg-0.3.0 KG_VERSION=0.3.0
 ```
 
