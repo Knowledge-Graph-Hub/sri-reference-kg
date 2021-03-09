@@ -40,8 +40,7 @@ mkdir data && cd data
 
 Then download all the required N-Triples to the `data` folder:
 ```
-
- wget -r "https://archive.monarchinitiative.org/@DATA_VERSION@/rdf/blcategories/"
+wget -r -nd "https://archive.monarchinitiative.org/@DATA_VERSION@/rdf/blcategories/"
 ```
 
 Where `@DATA_VERSION@` must be replaced with a proper data version from archive.monarchinitiative.org
