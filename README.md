@@ -93,7 +93,7 @@ To run the workflow,
 make all
 ```
 
-The `Makefile` relies on a set of arguments drive that behavior of the `Makefile` with the following defaults:
+The `Makefile` relies on a set of arguments that drives the behavior of the `Makefile` with the following defaults:
 ```sh
 DATA_DIR=data
 OUTPUT_DIR=data-parsed
