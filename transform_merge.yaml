@@ -55,14 +55,16 @@ merged_graph:
       name: "Monarch Ontologies"
       input:
         format: obojson
+        compression: gz
         filename:
-          - @DATA_DIR@/monarch-ontology-sri-translator.json
+          - @DATA_DIR@/monarch-ontology-sri-translator.json.gz
     chebi:
       name: "ChEBI"
       input:
         format: obojson
+        compression: gz
         filename:
-          - @DATA_DIR@/chebi.json
+          - @DATA_DIR@/chebi.json.gz
     panther:
       name: "Protein ANalysis THrough Evolutionary Relationships (Monarch version @VERSION@)"
       input:

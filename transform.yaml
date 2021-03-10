@@ -55,8 +55,9 @@ transform:
       name: "Monarch Ontologies"
       input:
         format: obojson
+        compression: gz
         filename:
-          - @DATA_DIR@/monarch-ontology-sri-translator.json
+          - @DATA_DIR@/monarch-ontology-sri-translator.json.gz
       output:
         format: tsv
         filename:
@@ -65,8 +66,9 @@ transform:
       name: "ChEBI"
       input:
         format: obojson
+        compression: gz
         filename:
-          - @DATA_DIR@/chebi.json
+          - @DATA_DIR@/chebi.json.gz
       output:
         format: tsv
         filename:
