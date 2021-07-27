@@ -64,11 +64,11 @@ pigz -p 2 -9r *
 
 ## Installing dependencies
 
-First set up a virtual environment,
+First set up a virtual environment, note that the kgx merge step requires python >= 3.8
 
 ```sh
 # create a new virtual environment
-python3 -m venv env
+python3.8 -m venv env
 
 # active the virtual environment
 source env/bin/activate
