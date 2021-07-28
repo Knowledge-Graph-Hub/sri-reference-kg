@@ -235,7 +235,7 @@ merged_graph:
           - @DATA_DIR@/zfinslim_nodes.tsv
           - @DATA_DIR@/zfinslim_edges.tsv
   operations:
-    - name: kgx.operations.clique_merge.clique_merge
+    - name: kgx.graph_operations.clique_merge.clique_merge
       args:
         leader_annotation: cliqueLeader
         prefix_prioritization_map:
@@ -244,7 +244,7 @@ merged_graph:
             - NCBIGene
             - ENSEMBL
         strict: false
-    - name: kgx.operations.summarize_graph.generate_graph_stats
+    - name: kgx.graph_operations.summarize_graph.generate_graph_stats
       args:
         graph_name: SRI Reference KG @KG_VERSION@
         filename: sri-reference-kg-@KG_VERSION@_stats.yaml
